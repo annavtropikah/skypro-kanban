@@ -1,7 +1,7 @@
 import './signup.css'
 
 
-export function Signup() {
+export function SignUp() {
  
 
   return (
