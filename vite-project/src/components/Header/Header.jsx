@@ -1,6 +1,11 @@
+import { useState } from "react";
 
 
-export default function Header() {
+export default function Header({addCard}) {
+  const [isOpened, setIsOpened] = useState(false);
+  function togglePopup(){
+            setIsOpened((prevState) => !prevState);
+        };
   return (
     <header className="header">
       <div className="container">
@@ -15,13 +20,19 @@ export default function Header() {
               <img src="./images/logo_dark.png" alt="logo" />
             </a>
           </div>
+
+
           <nav className="header__nav">
-            <button className="header__btn-main-new _hover01" id="btnMainNew">
-              <a href="#popNewCard">Создать новую задачу</a>
+            <button onClick={addCard} className="header__btn-main-new _hover01" id="btnMainNew">
+              Создать новую задачу
             </button>
-            <a href="#user-set-target" className="header__user _hover02">
+
+
+
+            <div onClick={togglePopup} className="header__user _hover02">
               Ivan Ivanov
-            </a>
+            </div>
+            {isOpened &&(
             <div
               className="header__pop-user-set pop-user-set"
               id="user-set-target"
@@ -37,6 +48,10 @@ export default function Header() {
                 <a href="#popExit">Выйти</a>
               </button>
             </div>
+            )}
+
+
+
           </nav>
         </div>
       </div>
