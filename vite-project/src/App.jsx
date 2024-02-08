@@ -9,6 +9,10 @@ import PopBrowse from './components/popups/PopBrowse/PopBrowse'
 import PopExit from './components/popups/PopExit/PopExit'
 import PopNewCard from './components/popups/PopNewCard/PopNewCard'
 import { cardList } from './data'
+import { Wrapper } from './common/Common.styled'
+import { GlobalStyle } from './common/Global.styled'
+
+
 
 
 const statusList = [
@@ -44,7 +48,8 @@ export default function App() {
 
   return (
     <>
-      <div className="wrapper">
+    <GlobalStyle />
+      <Wrapper>
         <PopExit />
         <PopNewCard />
         <PopBrowse />
@@ -62,7 +67,7 @@ export default function App() {
       
         </MainContent>)}
         
-      </div>
+      </Wrapper>
 
 
 
