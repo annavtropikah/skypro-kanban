@@ -1,25 +1,30 @@
-export default function Card ({topic,title,date}) {
+import { topicHeader } from "../../lib/topic";
+import * as S from "./Cardsitem.style"
+
+export default function Card({ topic, title, date }) {
+    console.log(topicHeader);
+
     return (
-        <div className="cards__item">
-        <div className="cards__card card">
-            <div className="card__group">
-                <div className="card__theme _orange">
-                    <p className="_orange">{topic}</p>
-                </div>
+        <S.CardItem>
+            <S.CardCard>
+                <S.CardGroup>
+                    <S.CardTheme $themeColor={topicHeader[topic]} >
+                    <S.TopicText>{topic}</S.TopicText>
+                </S.CardTheme>
                 <a href="#popBrowse" target="_self">
-                    <div className="card__btn">
-                        <div />
-                        <div />
-                        <div />
-                    </div>
+                    <S.CardBtn>
+                        <S.CardBtnDiv />
+                        <S.CardBtnDiv />
+                        <S.CardBtnDiv />
+                    </S.CardBtn>
                 </a>
-            </div>
-            <div className="card__content">
+            </S.CardGroup>
+            <S.CardContent>
                 <a href="" target="_blank">
-                    <h3 className="card__title">{title}</h3>
+                    <S.CardTitle>{title}</S.CardTitle>
                 </a>
-                <div className="card__date">
-                    <svg
+                <S.CardDate>
+                    <S.CardDateSwg
                         xmlns="http://www.w3.org/2000/svg"
                         width={13}
                         height={13}
@@ -46,11 +51,11 @@ export default function Card ({topic,title,date}) {
                                 <rect width={13} height={13} fill="white" />
                             </clipPath>
                         </defs>
-                    </svg>
-                    <p>{date}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </S.CardDateSwg>
+                    <S.CardDateP>{date}</S.CardDateP>
+                </S.CardDate>
+            </S.CardContent>
+        </S.CardCard>
+        </S.CardItem>
     )
 }
