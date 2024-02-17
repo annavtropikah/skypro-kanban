@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import { topicHeader } from "../../lib/topic";
 import * as S from "./Cardsitem.style"
 
-export default function Card({ topic, title, date }) {
+export default function Card({ topic, title, date, id }) {
     console.log(topicHeader);
 
     return (
@@ -11,13 +12,13 @@ export default function Card({ topic, title, date }) {
                     <S.CardTheme $themeColor={topicHeader[topic]} >
                     <S.TopicText>{topic}</S.TopicText>
                 </S.CardTheme>
-                <a href="#popBrowse" target="_self">
+                <Link to={`task/${id}`}>
                     <S.CardBtn>
                         <S.CardBtnDiv />
                         <S.CardBtnDiv />
                         <S.CardBtnDiv />
                     </S.CardBtn>
-                </a>
+                </Link>
             </S.CardGroup>
             <S.CardContent>
                 <a href="" target="_blank">

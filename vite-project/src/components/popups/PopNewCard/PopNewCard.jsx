@@ -1,4 +1,7 @@
 
+import './App.css'
+
+
 export default function PopNewCard () {
 return(
 <div className="pop-new-card" id="popNewCard">
