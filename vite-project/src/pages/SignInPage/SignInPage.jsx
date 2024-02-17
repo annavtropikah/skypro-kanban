@@ -3,7 +3,7 @@ import './SignIn.css'
 import './SignIn_dark.css'
 
 
-export function SignInPage() {
+export default function SignInPage() {
  
 
   return (

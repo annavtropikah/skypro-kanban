@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react'
-import './App.css'
 import { cardList } from '../../data'
 import Column from '../../components/Column/Column';
 import MainContent from '../../components/MainContent/MainContent';

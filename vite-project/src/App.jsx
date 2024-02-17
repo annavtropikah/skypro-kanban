@@ -4,11 +4,12 @@ import { appRouts } from "./lib/appRouts";
 import { useState } from "react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ExitPage from "./pages/ExitPage/ExitPage";
-import SignInPage from "./pages/SignUpPage/SignUpPage";
-import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import NotFound from "./pages/NotFoundPage/NotFoundPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import TaskPage from "./pages/TaskPage/TaskPage";
 import MainPage from "./pages/MainPage/MainPage";
+import SignInPage from "./pages/SignInPage/SignInPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+
 
 
 
@@ -32,7 +33,7 @@ export default function App() {
 
                 <Route path={appRouts.SIGNIN} element={<SignInPage />} />
                 <Route path={appRouts.SIGNUP} element={<SignUpPage />} />
-                <Route path={appRouts.NOT_FOUND} element={<NotFound />} />
+                <Route path={appRouts.NOT_FOUND} element={<NotFoundPage />} />
 
 
         </Routes>

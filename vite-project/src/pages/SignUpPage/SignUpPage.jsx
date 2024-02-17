@@ -6,7 +6,7 @@ import './SignUp_dark.css'
 
 
 
-export function SignUpPage() {
+export default function SignUpPage() {
  
 
   return (

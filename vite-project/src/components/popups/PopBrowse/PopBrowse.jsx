@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { appRouts } from "../../../lib/appRouts";
-import './App.css'
+
 
 
 export default function PopBrowse () {

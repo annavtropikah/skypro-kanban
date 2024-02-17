@@ -1,6 +1,4 @@
 
-import './App.css'
-
 
 export default function PopNewCard () {
 return(
