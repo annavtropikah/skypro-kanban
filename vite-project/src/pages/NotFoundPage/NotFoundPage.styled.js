@@ -27,6 +27,7 @@ color:darkgray;
     color:darkgreen;
     padding-left:20px;
     font-weight:600;
+    
 }
 
 `;
