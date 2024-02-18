@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+
+export const HeaderLogo = styled.div`
+
+& img {
+  width: 85px;
+}
+
+`
+  ;
+
+
 export const StyleHeader = styled.header`
 
   width: 100%;
@@ -165,7 +176,7 @@ display: flex;
 ;`
 
 
-export const ButtonExit = styled.button`
+export const ButtonExit = styled.span`
 
 width: 72px;
   height: 30px;
@@ -175,6 +186,13 @@ width: 72px;
   border: 1px solid #565EEF;
   cursor: pointer;
   outline: none;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:5px;
+  padding-bottom:5px;
+
+
+
 
 & a {
   color: #565EEF;
@@ -191,3 +209,29 @@ width: 72px;
   }
 
 `;
+
+
+
+
+
+
+
+//popup
+
+export const HeaderPopupUserSet = styled.div`
+
+display: block;
+  position: absolute;
+  top: 61px;
+  right: 0;
+  width: 213px;
+  height: 205px;
+  border-radius: 10px;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  background: #FFF;
+  box-shadow: 0px 10px 39px 0px rgba(26, 56, 101, 0.21);
+  padding: 34px;
+  text-align: center;
+  z-index: 2;
+
+;`

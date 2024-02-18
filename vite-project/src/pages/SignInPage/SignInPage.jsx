@@ -1,21 +1,22 @@
 
-import './SignIn.css'
-import './SignIn_dark.css'
-
+import { Link } from 'react-router-dom'
+import { appRoutes } from '../../lib/appRoutes'
+import * as S from "./SignInPage.styled"
+import "./SignIn.css"
 
 export default function SignInPage() {
  
 
   return (
 <>
-  <div className="wrapper">
-    <div className="container-signin">
-      <div className="modal">
-        <div className="modal__block">
-          <div className="modal__ttl">
+  <S.Wrapper>
+    <S.ConteinerSignin>
+      <S.Modal>
+        <S.ModalBlock>
+          <S.ModalTtl>
             <h2>Вход</h2>
-          </div>
-          <form className="modal__form-login" id="formLogIn" action="#">
+          </S.ModalTtl>
+          <S.ModalFormLogin>
             <input
               className="modal__input"
               type="text"
@@ -30,18 +31,24 @@ export default function SignInPage() {
               id="formpassword"
               placeholder="Пароль"
             />
-            <button className="modal__btn-enter _hover01" id="btnEnter">
-              <a href="../main.html">Войти</a>
-            </button>
-            <div className="modal__form-group">
+            <Link to={appRoutes.MAIN}>
+            <S.ModalBtnEnter>
+              Войти
+            </S.ModalBtnEnter>
+            </Link>
+            <S.ModalFormGroup>
               <p>Нужно зарегистрироваться?</p>
-              <a href="signup.html">Регистрируйтесь здесь</a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+             <Link to={appRoutes.SIGNUP}>
+              <span>
+              Регистрируйтесь здесь
+              </span>
+              </Link>
+            </S.ModalFormGroup>
+            </S.ModalFormLogin>
+        </S.ModalBlock>
+      </S.Modal>
+    </S.ConteinerSignin>
+  </S.Wrapper>
 </>
   )
 }

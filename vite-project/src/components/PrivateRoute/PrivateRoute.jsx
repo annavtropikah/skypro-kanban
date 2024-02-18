@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { appRouts } from "../../lib/appRouts";
+import { appRoutes } from "../../lib/appRoutes";
 
-export default function PrivateRoute({user}){
-return user ? <Outlet/> : <Navigate to={appRouts.SIGNIN}/>
+export default function PrivateRoute({ user }) {
+    return user ? <Outlet /> : <Navigate to={appRoutes.SIGNIN} />
 }

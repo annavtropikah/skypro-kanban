@@ -9,11 +9,6 @@ export default function Column({title, cardList}) {
             </S.ColumnTitle>
             <S.CardsStyle>
                 {cardList.map((card)=><Card topic={card.theme} title={card.title} date={card.date} key={card.id} id={card.id}/>)}
-               {/* <Card topic={"Web design"} title={"Новая задача"}/>
-               <Card topic={"Research"} title={"Новая задача"}/>
-               <Card topic={"Web design"} title={"Новая задача"}/>
-               <Card topic={"Research"} title={"Новая задача"}/>
-               <Card topic={"Web design"} title={"Новая задача"}/> */}
 
                
             </S.CardsStyle>

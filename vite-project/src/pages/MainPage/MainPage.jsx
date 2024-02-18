@@ -6,11 +6,9 @@ import MainContent from '../../components/MainContent/MainContent';
 import { Wrapper } from '../../common/Common.styled';
 import Header from '../../components/Header/Header';
 import { GlobalStyle } from '../../common/Global.styled';
-import PopExit from '../../components/popups/PopExit/PopExit';
-import PopNewCard from '../../components/popups/PopNewCard/PopNewCard';
-import PopBrowse from '../../components/popups/PopBrowse/PopBrowse';
 
-// import { Outlet } from 'react-router-dom';
+
+import { Outlet } from 'react-router-dom';
 
 
 const statusList = [
@@ -49,16 +47,14 @@ export default function MainPage() {
     <>
     <GlobalStyle />
       <Wrapper>
-        <PopExit />
-        <PopNewCard />
-        <PopBrowse />
-        {/* <Outlet/> */}
+      
+        <Outlet/>
 
         <Header addCard={addCard} />
         {isLoading ? "Loading......." : (<MainContent>
           {statusList.map((status) => (
             <Column
-              //следом статус колонки
+
               title={status}
               key={status}
               cardList={cards.filter((card) => card.status === status)}

@@ -1,24 +1,21 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  html,
+  
 body {
   width: 100%;
   height: 100%;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #000000;
-}
-  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-*:before,
-*:after {
+  &:before,
+  &:after {
   box-sizing: border-box;
 }
-
+}
+  
 a,
 a:visited {
   text-decoration: none;
@@ -37,11 +34,5 @@ ul li {
     opacity: 1;
   }
 }
-html,
-body {
-  width: 100%;
-  height: 100%;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  color: #000000;
-}
+
 `;

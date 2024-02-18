@@ -3,8 +3,6 @@ import { topicHeader } from "../../lib/topic";
 import * as S from "./Cardsitem.style"
 
 export default function Card({ topic, title, date, id }) {
-    console.log(topicHeader);
-
     return (
         <S.CardItem>
             <S.CardCard>
@@ -12,18 +10,18 @@ export default function Card({ topic, title, date, id }) {
                     <S.CardTheme $themeColor={topicHeader[topic]} >
                     <S.TopicText>{topic}</S.TopicText>
                 </S.CardTheme>
-                <Link to={`task/${id}`}>
+                <a href="#popBrowse" target="_self">
                     <S.CardBtn>
                         <S.CardBtnDiv />
                         <S.CardBtnDiv />
                         <S.CardBtnDiv />
                     </S.CardBtn>
-                </Link>
+                </a>
             </S.CardGroup>
             <S.CardContent>
-                <a href="" target="_blank">
+                <Link to={`task/${id}`}>
                     <S.CardTitle>{title}</S.CardTitle>
-                </a>
+                </Link>
                 <S.CardDate>
                     <S.CardDateSwg
                         xmlns="http://www.w3.org/2000/svg"

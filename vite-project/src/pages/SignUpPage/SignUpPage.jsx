@@ -1,9 +1,9 @@
 
-import './SignUp.css'
+import { Link } from 'react-router-dom'
+import { appRoutes } from '../../lib/appRoutes'
 
-import './SignUp_dark.css'
-
-
+import * as S from "./SignUpPage.styled"
+import "./SignUp.css"
 
 
 export default function SignUpPage() {
@@ -11,14 +11,14 @@ export default function SignUpPage() {
 
   return (
 <>
-<div className="wrapper">
-  <div className="container-signup">
-    <div className="modal">
-      <div className="modal__block">
-        <div className="modal__ttl">
+<S.Wrapper>
+  <S.ConteinerSignUp>
+    <S.Modal>
+      <S.ModalBlock>
+        <S.ModalTtl>
           <h2>Регистрация</h2>
-        </div>
-        <form className="modal__form-login" id="formLogUp" action="#">
+        </S.ModalTtl>
+        <S.ModalFormLogin>
           <input
             className="modal__input first-name"
             type="text"
@@ -40,19 +40,22 @@ export default function SignUpPage() {
             id="passwordFirst"
             placeholder="Пароль"
           />
-          <button className="modal__btn-signup-ent _hover01" id="SignUpEnter">
-            <a href="../main.html">Зарегистрироваться</a>{" "}
-          </button>
-          <div className="modal__form-group">
-            <p>
-              Уже есть аккаунт? <a href="signin.html">Войдите здесь</a>
-            </p>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+          <S.ModalBtnSignup>
+          Зарегистрироваться
+          </S.ModalBtnSignup>
+          <S.ModalFormGroup>
+            <p>Уже есть аккаунт?</p>
+              <Link to={appRoutes.SIGNIN}>
+              <span>
+                Войдите здесь
+                </span>
+              </Link>
+          </S.ModalFormGroup>
+        </S.ModalFormLogin>
+      </S.ModalBlock>
+    </S.Modal>
+  </S.ConteinerSignUp>
+</S.Wrapper>
 
 </>
   )
