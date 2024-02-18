@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { appRoutes } from "../../../lib/appRoutes";
 import * as S from "./PopBrowse.styled"
+import { topicHeader } from "../../../lib/topic";
 
 
-export default function PopBrowse() {
+export default function PopBrowse({topic}) {
   const { id } = useParams();
   return (
     <S.PopBrowse>
@@ -12,9 +13,9 @@ export default function PopBrowse() {
           <S.PopBrowseContent>
             <S.PopBrowseTopBlock>
               <h3 className="pop-browse__ttl">Название задачи:{id}</h3>
-              <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
+              <S.CardTheme $themeColor={topicHeader[topic]} >
+                    <S.TopicText>{topic}</S.TopicText>
+                </S.CardTheme>
             </S.PopBrowseTopBlock>
             <div className="pop-browse__status status">
               <p className="status__p">Статус</p>

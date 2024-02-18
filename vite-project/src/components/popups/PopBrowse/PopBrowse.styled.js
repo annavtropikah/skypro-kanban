@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { topicStyles } from '../../../lib/topic';
+import { topicStyles } from '../../../lib/topic';
 
 
 export const PopBrowse = styled.div`
@@ -74,27 +74,27 @@ export const PopBrowseTopBlock = styled.div`
 
 
 
-// export const TopicText = styled.p`
-//   font-size: 10px;
-//   font-weight: 600;
-//   line-height: 10px;
-// `;
+export const TopicText = styled.p`
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 10px;
+`;
 
-// export const CardTheme = styled.div`
-//   width: auto;
-//   height: 20px;
-//   padding: 5px 14px;
-//   border-radius: 18px;
-//   background-color: ${({ $themeColor }) =>
-//     topicStyles[$themeColor]?.backgroundColor || "#94a6be"};
+export const CardTheme = styled.div`
+  width: auto;
+  height: 20px;
+  padding: 5px 14px;
+  border-radius: 18px;
+  background-color: ${({ $themeColor }) =>
+    topicStyles[$themeColor]?.backgroundColor || "#94a6be"};
 
-//   ${TopicText} {
-//     color: ${({ $themeColor }) => topicStyles[$themeColor]?.color || "#ffffff"};
-//     font-size: 10px;
-//   font-weight: 600;
-//   line-height: 10px;
-//   }
-// `;
+  ${TopicText} {
+    color: ${({ $themeColor }) => topicStyles[$themeColor]?.color || "#ffffff"};
+    font-size: 10px;
+  font-weight: 600;
+  line-height: 10px;
+  }
+`;
 
 
 export const PopBrowseWrap = styled.div`
