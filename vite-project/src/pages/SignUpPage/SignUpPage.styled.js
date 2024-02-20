@@ -65,7 +65,7 @@ export const ModalTtl = styled.div`
 `;
 
 
-export const ModalFormLogin = styled.form`
+export const ModalFormLogin = styled.div`
  width: 100%;
     display: flex;
     flex-direction: column;

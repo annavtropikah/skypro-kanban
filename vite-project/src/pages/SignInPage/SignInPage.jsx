@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { signIn } from '../../api'
 
 export default function SignInPage({login}) {
+  
   const [loginData, setLoginData] = useState({ login: "", password: "" })
 
   const handleInputChange = (e) => {
@@ -16,13 +17,14 @@ export default function SignInPage({login}) {
       [name]: value, // Обновляем нужное поле
     });
   };
+
   const handleLogin = async() => {
 
 await signIn(loginData).then((data)=>{
   login(data.user)
 })
-
   }
+
   return (
     <>
       <S.Wrapper>
@@ -36,7 +38,6 @@ await signIn(loginData).then((data)=>{
                 <S.ModalInput
                   value={loginData.login}
                   onChange={handleInputChange}
-                  className="modal__input"
                   type="text"
                   name="login"
                   id="formlogin"
@@ -45,7 +46,6 @@ await signIn(loginData).then((data)=>{
                 <S.ModalInput
                   value={loginData.password}
                   onChange={handleInputChange}
-                  className="modal__input"
                   type="password"
                   name="password"
                   id="formpassword"

@@ -23,7 +23,7 @@ export async function getTodos({token}) {
 
 
 //Добавить задачу в список
-export async function postTodo(text) {
+export async function postTodo({text,token}) {
     const response = await fetch(baseHost, {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ export async function postTodo(text) {
 
 
 //Изменить задачу
-export async function putTodo({ text, id }) {
+export async function putTodo({ text, id, token }) {
     const response = await fetch(baseHost + `/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ export async function putTodo({ text, id }) {
 
 
 //Удалить задачу
-export async function deleteTodo({ text, id }) {
+export async function deleteTodo({ text, id, token }) {
     const response = await fetch(`https://wedev-api.sky.pro/api/kanban/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ export async function deleteTodo({ text, id }) {
 
 //ПОЛУЧИТЬ СПИСОК ПОЛЬЗОВАТЕЛЕЙ
 
-export async function getUsersList() {
+export async function getUsersList({token}) {
     const response = await fetch(userHost, {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -121,7 +121,7 @@ export async function getUsersList() {
 
 
 //РЕГИСТРАЦИЯ
-export function signUp({ login, name, password }) {
+export function signUp({ login, name, password}) {
     return fetch(userHost, {
         method: "POST",
         body: JSON.stringify({

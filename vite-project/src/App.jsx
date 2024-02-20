@@ -46,7 +46,7 @@ export default function App() {
 
 
                 <Route path={appRoutes.SIGNIN} element={<SignInPage login={login} />} />
-                <Route path={appRoutes.SIGNUP} element={<SignUpPage />} />
+                <Route path={appRoutes.SIGNUP} element={<SignUpPage login={login}  />} />
                 <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />} />
 
 
