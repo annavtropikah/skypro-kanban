@@ -55,7 +55,7 @@ export default function MainPage({ user }) {
         <Outlet />
 
         <Header addCard={addCard} />
-        {isLoading ? "Loading......." : (<MainContent>
+        {isLoading ? <img src="./images/loading-thinking.gif" alt="loading" /> : (<MainContent>
           {statusList.map((status) => (
             <Column
 
