@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { appRoutes } from '../../lib/appRoutes'
 
 import * as S from "./SignUpPage.styled"
-import "./SignUp.css"
+
 
 
 export default function SignUpPage() {
@@ -19,21 +19,21 @@ export default function SignUpPage() {
           <h2>Регистрация</h2>
         </S.ModalTtl>
         <S.ModalFormLogin>
-          <input
+          <S.ModalInput
             className="modal__input first-name"
             type="text"
             name="first-name"
             id="first-name"
             placeholder="Имя"
           />
-          <input
+          <S.ModalInput
             className="modal__input login"
             type="text"
             name="login"
             id="loginReg"
             placeholder="Эл. почта"
           />
-          <input
+          <S.ModalInput
             className="modal__input password-first"
             type="password"
             name="password"

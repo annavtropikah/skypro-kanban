@@ -1,5 +1,5 @@
 import "./App.css"
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { appRoutes } from "./lib/appRoutes";
 import { useState } from "react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
@@ -17,36 +17,40 @@ import { GlobalStyle } from "./common/Global.styled";
 
 
 export default function App() {
-    const [user, setUser] = useState(true)
-    function login() {
-        setUser(true)
+    const [user, setUser] = useState(null)
+    const navigate = useNavigate()
+    
+    function login(newUser) {
+        setUser(newUser)
+        navigate(appRoutes.MAIN)
     }
     function logout() {
-        setUser(false)
+        setUser(null)
+        navigate(appRoutes.SIGNIN)
     }
     return (
         <>
-        <GlobalStyle />
+            <GlobalStyle />
 
-        <Routes>
+            <Routes>
 
 
-            <Route element={<PrivateRoute user={user} />}>
-                <Route path={appRoutes.MAIN} element={<MainPage />}> 
-                    <Route path={appRoutes.TASK} element={<TaskPage />} />
-                    <Route login={login} logout={logout} path={appRoutes.EXIT} element={<ExitPage />} />
-                    <Route path={appRoutes.NEW_CARD} element={<NewCardPage />} /> 
+                <Route element={<PrivateRoute user={user} />}>
+                    <Route path={appRoutes.MAIN} element={<MainPage user={user} />}>
+                        <Route path={appRoutes.TASK} element={<TaskPage />} />
+                        <Route path={appRoutes.EXIT} element={<ExitPage logout={logout} />} />
+                        <Route path={appRoutes.NEW_CARD} element={<NewCardPage />} />
 
+                    </Route>
                 </Route>
-            </Route>
 
 
-            <Route path={appRoutes.SIGNIN} element={<SignInPage />} />
-            <Route path={appRoutes.SIGNUP} element={<SignUpPage />} />
-            <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />} />
+                <Route path={appRoutes.SIGNIN} element={<SignInPage login={login} />} />
+                <Route path={appRoutes.SIGNUP} element={<SignUpPage />} />
+                <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />} />
 
 
-        </Routes>
+            </Routes>
         </>
     )
 }

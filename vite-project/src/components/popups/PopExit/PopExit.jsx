@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { appRoutes } from "../../../lib/appRoutes";
 import * as S from "./PopExit.styled";
 
-export default function PopExit() {
+export default function PopExit({logout}) {
     return (
 
         <S.PopExit>
@@ -13,11 +13,11 @@ export default function PopExit() {
                     </S.PopExitTtl>
                     <span>
                         <S.PopExitFormGroup>
-                           <Link to={appRoutes.SIGNIN}>
-                            <S.PopExitYes>
+                           
+                            <S.PopExitYes onClick={logout}>
                             Да, выйти
                             </S.PopExitYes>
-                            </Link>
+                            
                             <Link to={appRoutes.MAIN}>
                             <S.PopExitNo>
                                Нет, остаться

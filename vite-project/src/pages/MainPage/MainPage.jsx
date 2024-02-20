@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react'
-import { cardList } from '../../data'
 import Column from '../../components/Column/Column';
 import MainContent from '../../components/MainContent/MainContent';
 import { Wrapper } from '../../common/Common.styled';
@@ -9,6 +8,7 @@ import { GlobalStyle } from '../../common/Global.styled';
 
 
 import { Outlet } from 'react-router-dom';
+import { getTodos } from '../../api';
 
 
 const statusList = [
@@ -19,17 +19,21 @@ const statusList = [
   "Готово",
 ];
 
-export default function MainPage() {
+export default function MainPage({ user }) {
 
-  const [cards, setCards] = useState(cardList);
+  const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
 
 
   useEffect(() => {
-    setTimeout(() => {
+    getTodos({ token: user.token }).then((todos) => {
+      console.log(todos);
+      setCards(todos.tasks);
       setIsLoading(false);
-    }, 2000);
-  }, []);
+    }).catch((error)=>{
+      alert (error)
+    })
+  }, [user])
 
   function addCard() {
     const newCard = {
@@ -45,10 +49,10 @@ export default function MainPage() {
 
   return (
     <>
-    <GlobalStyle />
+      <GlobalStyle />
       <Wrapper>
-      
-        <Outlet/>
+
+        <Outlet />
 
         <Header addCard={addCard} />
         {isLoading ? "Loading......." : (<MainContent>
@@ -60,9 +64,9 @@ export default function MainPage() {
               cardList={cards.filter((card) => card.status === status)}
             />
           ))}
-      
+
         </MainContent>)}
-        
+
       </Wrapper>
     </>
   )
