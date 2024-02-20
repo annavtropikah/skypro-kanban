@@ -1,9 +1,8 @@
+import { Link } from "react-router-dom";
 import { topicHeader } from "../../lib/topic";
 import * as S from "./Cardsitem.style"
 
-export default function Card({ topic, title, date }) {
-    console.log(topicHeader);
-
+export default function Card({ topic, title, date, id }) {
     return (
         <S.CardItem>
             <S.CardCard>
@@ -20,9 +19,9 @@ export default function Card({ topic, title, date }) {
                 </a>
             </S.CardGroup>
             <S.CardContent>
-                <a href="" target="_blank">
+                <Link to={`task/${id}`}>
                     <S.CardTitle>{title}</S.CardTitle>
-                </a>
+                </Link>
                 <S.CardDate>
                     <S.CardDateSwg
                         xmlns="http://www.w3.org/2000/svg"

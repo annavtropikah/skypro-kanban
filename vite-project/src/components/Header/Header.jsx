@@ -1,6 +1,8 @@
 import { useState } from "react";
 import * as S from "./Header.styled";
 import { Container } from "../../common/Common.styled";
+import { Link } from "react-router-dom";
+import { appRoutes } from "../../lib/appRoutes";
 
 
 export default function Header({ addCard }) {
@@ -12,16 +14,16 @@ export default function Header({ addCard }) {
     <S.StyleHeader>
       <Container>
         <S.HeaderBlock>
-          <div className="header__logo _show _light">
+          <S.HeaderLogo>
             <a href="" target="_self">
               <img src="./images/logo.png" alt="logo" />
             </a>
-          </div>
-          <div className="header__logo _dark">
+          </S.HeaderLogo>
+          {/* <div className="header__logo _dark">
             <a href="" target="_self">
               <img src="./images/logo_dark.png" alt="logo" />
             </a>
-          </div>
+          </div> */}
 
 
           <S.HeaderNav>
@@ -35,10 +37,7 @@ export default function Header({ addCard }) {
               Ivan Ivanov
             </S.HeaderUser>
             {isOpened && (
-              <div
-                className="header__pop-user-set pop-user-set"
-                id="user-set-target"
-              >
+           <S.HeaderPopupUserSet>
                 {/* <a href="">x</a> */}
                 <S.PopUserSetName>Ivan Ivanov</S.PopUserSetName>
                 <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
@@ -46,10 +45,12 @@ export default function Header({ addCard }) {
                   <p>Темная тема</p>
                   <input type="checkbox"  name="checkbox" />
                 </S.PopUserSetTheme>
-                <S.ButtonExit type="button" >
-                  <a href="#popExit">Выйти</a>
+                <Link to={appRoutes.SIGNIN}>
+                <S.ButtonExit>
+                  Выйти
                 </S.ButtonExit>
-              </div>
+                </Link>
+                </S.HeaderPopupUserSet>
             )}
 
 
