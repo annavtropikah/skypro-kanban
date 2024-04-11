@@ -1,12 +1,15 @@
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { appRoutes } from '../../lib/appRoutes'
 import * as S from "./SignInPage.styled"
 import { useState } from 'react'
 import { signIn } from '../../api'
+import { useUser } from '../../hooks/useUser'
 
-export default function SignInPage({login}) {
-  
+export default function SignInPage() {
+  const { login } = useUser()
+  const navigate = useNavigate()
+
   const [loginData, setLoginData] = useState({ login: "", password: "" })
 
   const handleInputChange = (e) => {
@@ -18,11 +21,13 @@ export default function SignInPage({login}) {
     });
   };
 
-  const handleLogin = async() => {
+  const handleLogin = async () => {
 
-await signIn(loginData).then((data)=>{
-  login(data.user)
-})
+    await signIn(loginData).then((data) => {
+      login(data.user)
+      navigate(appRoutes.MAIN)
+
+    })
   }
 
   return (
@@ -51,11 +56,11 @@ await signIn(loginData).then((data)=>{
                   id="formpassword"
                   placeholder="Пароль"
                 />
-            
-                  <S.ModalBtnEnter onClick={handleLogin}>
-                    Войти
-                  </S.ModalBtnEnter>
-              
+
+                <S.ModalBtnEnter onClick={handleLogin}>
+                  Войти
+                </S.ModalBtnEnter>
+
                 <S.ModalFormGroup>
                   <p>Нужно зарегистрироваться?</p>
                   <Link to={appRoutes.SIGNUP}>

@@ -9,6 +9,7 @@ import { GlobalStyle } from '../../common/Global.styled';
 
 import { Outlet } from 'react-router-dom';
 import { getTodos } from '../../api';
+import { useUser } from '../../hooks/useUser';
 
 
 const statusList = [
@@ -19,19 +20,19 @@ const statusList = [
   "Готово",
 ];
 
-export default function MainPage({ user }) {
+export default function MainPage() {
 
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
-
+  const{user}=useUser()
 
   useEffect(() => {
     getTodos({ token: user.token }).then((todos) => {
       console.log(todos);
       setCards(todos.tasks);
       setIsLoading(false);
-    }).catch((error)=>{
-      alert (error)
+    }).catch((error) => {
+      alert(error)
     })
   }, [user])
 

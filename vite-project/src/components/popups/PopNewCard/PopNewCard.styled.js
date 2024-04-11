@@ -260,33 +260,3 @@ export const PopBrowseBtnClose = styled.span`
   padding: 0 14px;
  }
 `;
-
-export const PopBrowseStatus= styled.div`
-
-  
-  background-color: transparent;
-  border-radius: 4px;
-  border: 0.7px solid var(--palette-navy-60, #565EEF);
-  outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 500;
-  letter-spacing: -0.14px;
-  color:  #565EEF;
-  margin-right:8px;
-  padding:8px 15px;
-  
-  
-  &:hover{
-    background-color: #33399b;
-    color: #FFFFFF;
-  }
-@media screen and (max-width: 495px) {
-  height: 30px;
-  margin-bottom: 10px;
-  padding: 0 14px;
-}
-`;

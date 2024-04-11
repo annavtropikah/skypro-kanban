@@ -23,14 +23,14 @@ export async function getTodos({token}) {
 
 
 //Добавить задачу в список
-export async function postTodo({text,token}) {
+export async function postTodo({taskData,token}) {
     const response = await fetch(baseHost, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         method: "POST",
         body: JSON.stringify({
-            text,
+            text:taskData,
         }),
     });
 
@@ -45,15 +45,15 @@ export async function postTodo({text,token}) {
 
 
 //Изменить задачу
-export async function putTodo({ text, id, token }) {
+export async function editTodo({ taskData, id, token }) {
     const response = await fetch(baseHost + `/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         method: "PUT",
-        body: JSON.stringify({
-            text,
-        }),
+        body: JSON.stringify(
+            taskData,
+        ),
     });
 
     if (!response.status === 201) {
@@ -67,15 +67,13 @@ export async function putTodo({ text, id, token }) {
 
 
 //Удалить задачу
-export async function deleteTodo({ text, id, token }) {
+export async function deleteTodo({  id, token }) {
     const response = await fetch(`https://wedev-api.sky.pro/api/kanban/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         method: "DELETE",
-        body: JSON.stringify({
-            text,
-        }),
+       
     });
 
     if (!response.status === 201) {

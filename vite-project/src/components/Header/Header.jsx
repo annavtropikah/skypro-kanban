@@ -27,9 +27,12 @@ export default function Header({ addCard }) {
 
 
           <S.HeaderNav>
-            <S.ButtonAdd onClick={addCard} id="btnMainNew">
-              Создать новую задачу
-            </S.ButtonAdd>
+            <Link to={appRoutes.NEW_CARD}>
+              <S.ButtonAdd onClick={addCard} id="btnMainNew">
+                Создать новую задачу
+              </S.ButtonAdd>
+            </Link>
+
 
 
 
@@ -37,20 +40,20 @@ export default function Header({ addCard }) {
               Ivan Ivanov
             </S.HeaderUser>
             {isOpened && (
-           <S.HeaderPopupUserSet>
+              <S.HeaderPopupUserSet>
                 {/* <a href="">x</a> */}
                 <S.PopUserSetName>Ivan Ivanov</S.PopUserSetName>
                 <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
-                  <input type="checkbox"  name="checkbox" />
+                  <input type="checkbox" name="checkbox" />
                 </S.PopUserSetTheme>
                 <Link to={appRoutes.SIGNIN}>
-                <S.ButtonExit>
-                  Выйти
-                </S.ButtonExit>
+                  <S.ButtonExit>
+                    Выйти
+                  </S.ButtonExit>
                 </Link>
-                </S.HeaderPopupUserSet>
+              </S.HeaderPopupUserSet>
             )}
 
 
