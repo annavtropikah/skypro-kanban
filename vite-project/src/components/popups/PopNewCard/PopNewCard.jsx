@@ -22,8 +22,8 @@ export default function PopNewCard() {
     topic: " ",
   })
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async () => {
+    
     //полуим все поля из нью такс и запишем выбранную дату в объект по лключю date, так как апи ожитает дату под этим ключом
     const taskData = {
       ...newTask,
@@ -171,12 +171,12 @@ export default function PopNewCard() {
 
 
               </S.PopBrowseBtnBrowse>
-              <div className="pop-browse__btn-edit _hide">
+              <div className="pop-browse__btn-edit ">
 
                 <Link to={appRoutes.MAIN}>
-                  <span className="btn-edit__close _btn-bg _hover01">
+                <S.PopBrowseBtnClose className="btn-edit__close _btn-bg _hover01">
                     Закрыть
-                  </span>
+                  </S.PopBrowseBtnClose>
                 </Link>
               </div>
             </S.PopBrowseContent>

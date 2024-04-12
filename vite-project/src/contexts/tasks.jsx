@@ -1,30 +1,28 @@
 import { createContext, useState } from "react";
 
 
-// function getTaskFromLocalStorage() {
-//   try {
-//     return JSON.parse(localStorage.getItem("task"));
-//   } catch (error) {
-//     console.log(error);
-//     return null;
-//   }
-// }
+function getTaskFromLocalStorage() {
+  try {
+    return JSON.parse(localStorage.getItem("task"));
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
 export const TasksContext = createContext({});
 
 
 
 export const TaskProvider = ({ children }) => {
 
-  const [cards, setCards] = useState([]);
+  // const [cards, setCards] = useState([]);
   
-  // const [cards, setCards] = useState(getTaskFromLocalStorage());
+  const [cards, setCards] = useState(getTaskFromLocalStorage());
 
-
-  
 
   const updateTask = (newTask) => {
     setCards(newTask);
-    // localStorage.setItem("task", JSON.stringify(newTask));
+    localStorage.setItem("task", JSON.stringify(newTask));
   }
   return (
    

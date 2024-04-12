@@ -22,14 +22,14 @@ const statusList = [
 
 export default function MainPage() {
 
-  const [cards, setCards] = useState([]);
+  const [cards, updateTask] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
   const{user}=useUser()
 
   useEffect(() => {
     getTodos({ token: user.token }).then((todos) => {
       console.log(todos);
-      setCards(todos.tasks);
+      updateTask(todos.tasks);
       setIsLoading(false);
     }).catch((error) => {
       alert(error)
@@ -44,7 +44,7 @@ export default function MainPage() {
       date: "29.10.23",
       status: "Без статуса",
     }
-    setCards([...cards, newCard])
+    updateTask([...cards, newCard])
   }
 
 

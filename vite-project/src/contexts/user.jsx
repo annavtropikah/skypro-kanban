@@ -10,7 +10,10 @@ function getUserFromLocalStogage() {
 }
 
 export const UserContext = createContext(null)
+
+
 export const UserProvider = ({ children }) => {
+    
     const [user, setUser] = useState(getUserFromLocalStogage())
 
     function login(newUser) {
