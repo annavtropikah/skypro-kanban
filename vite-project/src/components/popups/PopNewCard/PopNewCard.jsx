@@ -69,38 +69,38 @@ export default function PopNewCard() {
 
 
                 <S.PopBrowseForm>
-            
-                    <S.PopBrowseBlock>
-                      <S.PopBrowseTaskSubttl htmlFor="formTitle">
-                        Название задачи
-                      </S.PopBrowseTaskSubttl>
-                      <S.ForrmNewInput
 
-                        type="text"
-                        name="title"
-                        value={newTask.title}
-                        onChange={handleInputChange}
-                        id="formTitle"
-                        placeholder="Введите название задачи..."
-                        autoFocus
-                      >
-                      </S.ForrmNewInput>
-                    </S.PopBrowseBlock>
+                  <S.PopBrowseBlock>
+                    <S.PopBrowseTaskSubttl htmlFor="formTitle">
+                      Название задачи
+                    </S.PopBrowseTaskSubttl>
+                    <S.ForrmNewInput
 
-                    <S.PopBrowseBlock>
-                      <S.PopBrowseTaskSubttl>
-                        Описание задачи
-                      </S.PopBrowseTaskSubttl>
-                      <S.FormNewArea
-                        name="description"
-                        value={newTask.description}
-                        onChange={handleInputChange}
-                        id="textArea01"
-                        placeholder="Введите описание задачи..."
-                      >
-                      </S.FormNewArea>
-                    </S.PopBrowseBlock>
-      
+                      type="text"
+                      name="title"
+                      value={newTask.title}
+                      onChange={handleInputChange}
+                      id="formTitle"
+                      placeholder="Введите название задачи..."
+                      autoFocus
+                    >
+                    </S.ForrmNewInput>
+                  </S.PopBrowseBlock>
+
+                  <S.PopBrowseBlock>
+                    <S.PopBrowseTaskSubttl>
+                      Описание задачи
+                    </S.PopBrowseTaskSubttl>
+                    <S.FormNewArea
+                      name="description"
+                      value={newTask.description}
+                      onChange={handleInputChange}
+                      id="textArea01"
+                      placeholder="Введите описание задачи..."
+                    >
+                    </S.FormNewArea>
+                  </S.PopBrowseBlock>
+
                 </S.PopBrowseForm>
 
                 {/* <div>
@@ -111,41 +111,41 @@ export default function PopNewCard() {
               </S.PopBrowseWrap>
 
               <S.PopBrowseTaskSubttl>
-                    Категория
-                  </S.PopBrowseTaskSubttl>
+                Категория
+              </S.PopBrowseTaskSubttl>
 
               <S.RadioToolbar>
-                
-                
 
 
-                  
-                    <input
-                      type="radio"
-                      id="radio1"
-                      name="topic"
-                      value="Web Design"
-                      onChange={handleInputChange}
-                    />
-                    <S.RadioToolbarLabel1 htmlFor="radio1">Web Design</S.RadioToolbarLabel1>
 
-                    <input
-                      type="radio"
-                      id="radio2"
-                      name="topic"
-                      value="Research"
-                      onChange={handleInputChange} />
-                    <S.RadioToolbarLabel2 htmlFor="radio2">Research</S.RadioToolbarLabel2>
 
-                    <input
-                      type="radio"
-                      id="radio3"
-                      name="topic"
-                      value="Copywriting"
-                      onChange={handleInputChange} />
-                    <S.RadioToolbarLabel3 htmlFor="radio3">Copywriting</S.RadioToolbarLabel3>
-                
-                
+
+                <S.InputRadio
+                  type="radio"
+                  id="radio1"
+                  name="topic"
+                  value="Web Design"
+                  onChange={handleInputChange}
+                />
+                <S.RadioToolbarLabel1 htmlFor="radio1">Web Design</S.RadioToolbarLabel1>
+
+                <S.InputRadio
+                  type="radio"
+                  id="radio2"
+                  name="topic"
+                  value="Research"
+                  onChange={handleInputChange} />
+                <S.RadioToolbarLabel2 htmlFor="radio2">Research</S.RadioToolbarLabel2>
+
+                <S.InputRadio
+                  type="radio"
+                  id="radio3"
+                  name="topic"
+                  value="Copywriting"
+                  onChange={handleInputChange} />
+                <S.RadioToolbarLabel3 htmlFor="radio3">Copywriting</S.RadioToolbarLabel3>
+
+
               </S.RadioToolbar>
               <S.PopAddContainer>
                 <S.PopBrowseBtnBrowse>
@@ -158,15 +158,23 @@ export default function PopNewCard() {
                   </S.PopBrowseBtnClose>
 
 
-                </S.PopBrowseBtnBrowse>
-                <div className="pop-browse__btn-edit ">
+                  <S.PopBrowseBtnClose>
 
-                  <Link to={appRoutes.MAIN}>
-                    <S.PopBrowseBtnClose className="btn-edit__close _btn-bg _hover01">
-                      Закрыть
-                    </S.PopBrowseBtnClose>
-                  </Link>
-                </div>
+                    <Link to={appRoutes.MAIN}>
+                      <S.PopBrowseBtnClose className="btn-edit__close _btn-bg _hover01">
+                        Закрыть
+                      </S.PopBrowseBtnClose>
+                    </Link>
+                  </S.PopBrowseBtnClose>
+
+                </S.PopBrowseBtnBrowse>
+
+
+
+
+
+
+
               </S.PopAddContainer>
             </S.PopBrowseContent>
           </S.PopBrowseBlock>
