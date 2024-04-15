@@ -11,7 +11,7 @@ import { useTasks } from "../../../hooks/useTasks";
 export default function PopNewCard() {
   const { user } = useUser();
   const navigate = useNavigate();
-  const { setCards } = useTasks();
+  const { updateTask } = useTasks();
 
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -23,7 +23,7 @@ export default function PopNewCard() {
   })
 
   const handleFormSubmit = async () => {
-    
+  
     //полуим все поля из нью такс и запишем выбранную дату в объект по лключю date, так как апи ожитает дату под этим ключом
     const taskData = {
       ...newTask,
@@ -33,9 +33,9 @@ export default function PopNewCard() {
     console.log(taskData);
 // функция должна быть для отправки данных со второго курса
     await postTodo({ taskData, token: user.token })
-      .then((tasksData) => {
-        console.log(tasksData);
-        setCards(taskData.tasks)
+      .then((data) => {
+        console.log(data);
+        updateTask(data.tasks)
         navigate(appRoutes.MAIN);
       }).catch((error) => {
         alert(error)
@@ -81,7 +81,7 @@ export default function PopNewCard() {
                   id="formTitle"
                   readOnly=""
                   placeholder="Введите название задачи..."
-                  defaultValue={""}
+                  
                 />
 
                 <div className="status__themes">
@@ -116,12 +116,11 @@ export default function PopNewCard() {
                       id="textArea01"
                       readOnly=""
                       placeholder="Введите описание задачи..."
-                      defaultValue={""}
+                     
                     />
                   </S.PopBrowseBlock>
                 </S.PopBrowseForm>
-                <Calendar selectedDate={selectedDate}
-                  setSelectedDate={setSelectedDate} />
+                <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
 
               </S.PopBrowseWrap>
 

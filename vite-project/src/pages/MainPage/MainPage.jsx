@@ -10,6 +10,7 @@ import { GlobalStyle } from '../../common/Global.styled';
 import { Outlet } from 'react-router-dom';
 import { getTodos } from '../../api';
 import { useUser } from '../../hooks/useUser';
+import { useTasks } from '../../hooks/useTasks';
 
 
 const statusList = [
@@ -22,7 +23,7 @@ const statusList = [
 
 export default function MainPage() {
 
-  const [cards, updateTask] = useState([]);
+  const {cards, updateTask} = useTasks();
   const [isLoading, setIsLoading] = useState(true)
   const{user}=useUser()
 
@@ -34,18 +35,10 @@ export default function MainPage() {
     }).catch((error) => {
       alert(error)
     })
-  }, [user])
+  }, [user,updateTask])
 
-  function addCard() {
-    const newCard = {
-      id: cards.length + 1,
-      theme: "Web Design",
-      title: "Название задачи",
-      date: "29.10.23",
-      status: "Без статуса",
-    }
-    updateTask([...cards, newCard])
-  }
+
+  
 
 
   return (
@@ -55,7 +48,7 @@ export default function MainPage() {
 
         <Outlet />
 
-        <Header addCard={addCard} />
+        <Header  />
         {isLoading ? <img src="./images/loading-thinking.gif" alt="loading" /> : (<MainContent>
           {statusList.map((status) => (
             <Column
