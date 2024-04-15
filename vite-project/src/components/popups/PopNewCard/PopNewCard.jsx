@@ -23,15 +23,15 @@ export default function PopNewCard() {
   })
 
   const handleFormSubmit = async () => {
-  
+
     //полуим все поля из нью такс и запишем выбранную дату в объект по лключю date, так как апи ожитает дату под этим ключом
     const taskData = {
       ...newTask,
       date: selectedDate,
     };
-    
+
     console.log(taskData);
-// функция должна быть для отправки данных со второго курса
+    // функция должна быть для отправки данных со второго курса
     await postTodo({ taskData, token: user.token })
       .then((data) => {
         console.log(data);
@@ -64,124 +64,114 @@ export default function PopNewCard() {
             <S.PopBrowseContent>
               <S.PopBrowseTopBlock>
                 <h3 className="pop-browse__ttl">Создание задачи</h3>
-                <div className="categories__theme theme-top _orange _active-category">
-                  <p className="_orange">Web Design</p>
-                </div>
               </S.PopBrowseTopBlock>
-
-              <div className="pop-browse__status status">
-                <S.PopBrowseTaskSubttl htmlFor="formTitle">
-                  Название задачи
-                </S.PopBrowseTaskSubttl>
-                <textarea
-                  className="form-browse__area"
-                  name="title"
-                  value={newTask.title}
-                  onChange={handleInputChange}
-                  id="formTitle"
-                  readOnly=""
-                  placeholder="Введите название задачи..."
-                  
-                />
-
-                <div className="status__themes">
-                  <div className="status__theme _hide">
-                    <p>Без статуса</p>
-                  </div>
-                  <div className="status__theme _hide">
-                    <p className="_gray">Нужно сделать</p>
-                  </div>
-                  <div className="status__theme _hide">
-                    <p>В работе</p>
-                  </div>
-                  <div className="status__theme _hide">
-                    <p>Тестирование</p>
-                  </div>
-                  <div className="status__theme _hide">
-                    <p>Готово</p>
-                  </div>
-                </div>
-              </div>
               <S.PopBrowseWrap>
-                <S.PopBrowseForm>
-                  <S.PopBrowseBlock>
-                    <S.PopBrowseTaskSubttl>
-                      Описание задачи
-                    </S.PopBrowseTaskSubttl>
-                    <textarea
-                      className="form-browse__area"
-                      name="description"
-                      value={newTask.description}
-                      onChange={handleInputChange}
-                      id="textArea01"
-                      readOnly=""
-                      placeholder="Введите описание задачи..."
-                     
-                    />
-                  </S.PopBrowseBlock>
-                </S.PopBrowseForm>
-                <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
 
+
+                <S.PopBrowseForm>
+            
+                    <S.PopBrowseBlock>
+                      <S.PopBrowseTaskSubttl htmlFor="formTitle">
+                        Название задачи
+                      </S.PopBrowseTaskSubttl>
+                      <S.ForrmNewInput
+
+                        type="text"
+                        name="title"
+                        value={newTask.title}
+                        onChange={handleInputChange}
+                        id="formTitle"
+                        placeholder="Введите название задачи..."
+                        autoFocus
+                      >
+                      </S.ForrmNewInput>
+                    </S.PopBrowseBlock>
+
+                    <S.PopBrowseBlock>
+                      <S.PopBrowseTaskSubttl>
+                        Описание задачи
+                      </S.PopBrowseTaskSubttl>
+                      <S.FormNewArea
+                        name="description"
+                        value={newTask.description}
+                        onChange={handleInputChange}
+                        id="textArea01"
+                        placeholder="Введите описание задачи..."
+                      >
+                      </S.FormNewArea>
+                    </S.PopBrowseBlock>
+      
+                </S.PopBrowseForm>
+
+                {/* <div>
+                  <p>Дата</p>
+                </div> */}
+
+                <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
               </S.PopBrowseWrap>
 
-              <div className="prod_checbox">
-                <S.PopBrowseTaskSubttl>
-                  Категория
-                </S.PopBrowseTaskSubttl>
-                <div className="radio-toolbar">
-                  <input
-                    type="radio"
-                    id="radio1"
-                    name="topic"
-                    value="Web Design"
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor="radio1">Web Design</label>
+              <S.PopBrowseTaskSubttl>
+                    Категория
+                  </S.PopBrowseTaskSubttl>
 
-                  <input
-                    type="radio"
-                    id="radio2"
-                    name="topic"
-                    value="Research"
-                    onChange={handleInputChange} />
-                  <label htmlFor="radio2">Research</label>
-
-                  <input
-                    type="radio"
-                    id="radio3"
-                    name="topic"
-                    value="Copywriting"
-                    onChange={handleInputChange} />
-                  <label htmlFor="radio3">Copywriting</label>
-                </div>
-              </div>
+              <S.RadioToolbar>
+                
+                
 
 
+                  
+                    <input
+                      type="radio"
+                      id="radio1"
+                      name="topic"
+                      value="Web Design"
+                      onChange={handleInputChange}
+                    />
+                    <S.RadioToolbarLabel1 htmlFor="radio1">Web Design</S.RadioToolbarLabel1>
 
+                    <input
+                      type="radio"
+                      id="radio2"
+                      name="topic"
+                      value="Research"
+                      onChange={handleInputChange} />
+                    <S.RadioToolbarLabel2 htmlFor="radio2">Research</S.RadioToolbarLabel2>
 
-              <S.PopBrowseBtnBrowse>
+                    <input
+                      type="radio"
+                      id="radio3"
+                      name="topic"
+                      value="Copywriting"
+                      onChange={handleInputChange} />
+                    <S.RadioToolbarLabel3 htmlFor="radio3">Copywriting</S.RadioToolbarLabel3>
+                
+                
+              </S.RadioToolbar>
+              <S.PopAddContainer>
+                <S.PopBrowseBtnBrowse>
 
-                <S.PopBrowseBtnClose onClick={() => {
-                  handleFormSubmit();
+                  <S.PopBrowseBtnClose onClick={() => {
+                    handleFormSubmit();
 
-                }}>
-                  Создать задачу
-                </S.PopBrowseBtnClose>
-
-
-              </S.PopBrowseBtnBrowse>
-              <div className="pop-browse__btn-edit ">
-
-                <Link to={appRoutes.MAIN}>
-                <S.PopBrowseBtnClose className="btn-edit__close _btn-bg _hover01">
-                    Закрыть
+                  }}>
+                    Создать задачу
                   </S.PopBrowseBtnClose>
-                </Link>
-              </div>
+
+
+                </S.PopBrowseBtnBrowse>
+                <div className="pop-browse__btn-edit ">
+
+                  <Link to={appRoutes.MAIN}>
+                    <S.PopBrowseBtnClose className="btn-edit__close _btn-bg _hover01">
+                      Закрыть
+                    </S.PopBrowseBtnClose>
+                  </Link>
+                </div>
+              </S.PopAddContainer>
             </S.PopBrowseContent>
           </S.PopBrowseBlock>
         </S.PopBrowseContainer>
-      </S.PopBrowse>
+      </S.PopBrowse >
     </>
   )
 }

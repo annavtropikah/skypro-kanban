@@ -38,9 +38,6 @@ export default function MainPage() {
   }, [user,updateTask])
 
 
-  
-
-
   return (
     <>
       <GlobalStyle />

@@ -3,17 +3,14 @@ import { topicStyles } from '../../../lib/topic';
 
 
 export const PopBrowse = styled.div`
-display: block;
-  width: 100%;
-  height: 100%;
+ width: 100%;
   min-width: 375px;
+  height: 100%;
   min-height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 7;
-  
-  
+  z-index: 6;
 
 `;
 
@@ -32,8 +29,26 @@ width: 100%;
   
 `;
 
+export const PopBrowseWrap = styled.div`
+ display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  
+`;
+
+export const PopBrowseForm = styled.div`
+  max-width: 370px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  margin-right:40px;
+  
+`;
+
 
 export const PopBrowseBlock = styled.div`
+display: flex;
+  flex-direction: column;
 display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
@@ -55,6 +70,23 @@ display: block;
   }
 `;
 
+
+
+export const FormNewArea = styled.textarea`
+  width: 100%;
+  outline: none;
+  padding: 14px;
+  background: transparent;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+  max-width: 370px;
+  margin-top: 14px;
+  height: 200px;
+`
+
 export const PopBrowseContent = styled.div`
 display: block;
   text-align: left;
@@ -66,10 +98,23 @@ export const PopBrowseTopBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  
 `;
 
 
+
+export const ForrmNewInput = styled.input`
+  width: 100%;
+  outline: none;
+  padding: 14px;
+  background: transparent;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+  margin: 20px 0;
+`
 
 
 
@@ -97,21 +142,10 @@ export const CardTheme = styled.div`
 `;
 
 
-export const PopBrowseWrap = styled.div`
- display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  
-`;
 
 
-export const PopBrowseForm = styled.form`
-  max-width: 370px;
-  width: 100%;
-  display: block;
- 
-  
-`;
+
+
 
 
 export const PopBrowseTaskSubttl = styled.label`
@@ -232,6 +266,74 @@ export const PopBrowseBtnDelit = styled.span`
 }
 `;
 
+
+
+
+export const RadioToolbar = styled.div`
+margin-top:15px;
+
+`
+export const RadioToolbarLabel1 = styled.label`
+  display: inline-block;
+  padding: 8px 20px 8px 20px;
+  border-radius: 24px;
+  color: #ff6d00;
+  background: #ffe4c2;
+  cursor: pointer;
+  margin-right: 7px;
+  opacity: 40%;
+
+  &:hover {
+    opacity: 100%;
+  }
+`
+
+export const RadioToolbarLabel2 = styled.label`
+  display: inline-block;
+  padding: 8px 20px 8px 20px;
+  border-radius: 24px;
+  color: #06b16e;
+  background: #b4fdd1;
+  cursor: pointer;
+  margin-right: 7px;
+  opacity: 40%;
+
+  &:hover {
+    opacity: 100%;
+  }
+`
+
+export const RadioToolbarLabel3 = styled.label`
+  display: inline-block;
+  padding: 8px 20px 8px 20px;
+  border-radius: 24px;
+  color: #9a48f1;
+  background: #e9d4ff;
+  cursor: pointer;
+  margin-right: 7px;
+  opacity: 40%;
+
+  &:hover {
+    opacity: 100%;
+    
+  }
+`
+
+export const PopAddContainer= styled.div`
+
+width: 100%;
+
+
+  padding: 10 16 px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  
+  
+  
+`;
 export const PopBrowseBtnClose = styled.span`
 
 
@@ -259,4 +361,4 @@ export const PopBrowseBtnClose = styled.span`
   margin-bottom: 10px;
   padding: 0 14px;
  }
-`;
+`

@@ -109,6 +109,7 @@ export const PopBrowseForm = styled.form`
   max-width: 370px;
   width: 100%;
   display: block;
+  margin-right:40px;
  
   
 `;
