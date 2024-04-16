@@ -6,7 +6,7 @@ import { appRoutes } from "../../lib/appRoutes";
 import { useUser } from "../../hooks/useUser";
 
 
-export default function Header({ addCard }) {
+export default function Header() {
   const { user } = useUser();
   const [isOpened, setIsOpened] = useState(false);
   function togglePopup() {

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 
 function getTaskFromLocalStorage() {
@@ -20,11 +20,11 @@ export const TaskProvider = ({ children }) => {
   const [cards, setCards] = useState(getTaskFromLocalStorage());
 
 
-  const updateTask = (newTask) => {
+  const updateTask = useCallback((newTask) => {
     setCards(newTask);
     localStorage.setItem("task", JSON.stringify(newTask));
-  }
-  return (
+  },[])
+    return (
    
     <TasksContext.Provider value={{ cards, updateTask }}>
       {children}

@@ -30,7 +30,7 @@ export async function postTodo({taskData,token}) {
         },
         method: "POST",
         body: JSON.stringify({
-            text:taskData,
+            taskData,
         }),
     });
 
