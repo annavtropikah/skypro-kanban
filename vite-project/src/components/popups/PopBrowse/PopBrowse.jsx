@@ -6,6 +6,7 @@ import { useTasks } from "../../../hooks/useTasks";
 import { useState } from "react";
 import { deleteTodo } from "../../../api";
 import { useUser } from "../../../hooks/useUser";
+import { topicHeader } from "../../../lib/topic";
 
 
 export default function PopBrowse() {
@@ -70,35 +71,57 @@ export default function PopBrowse() {
             <S.PopBrowseTopBlock>
               <h3 className="pop-browse__ttl">Название задачи:{currentTask.title}</h3>
               <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">{currentTask.topic}</p>
-                {/* ПОСМОТРЕТЬ ИНСТРУКЦИЮ И СДЕЛАТЬ ПО АНАЛОГИИ ЧТОБЫ МЕНЯЛСЯ ЦВЕТ ТЕМЫ<S.CardTheme $themeColor={topicHeader[topic]} >
-                    <S.TopicText>{topic}</S.TopicText>
-                </S.CardTheme> */}
+                
+                <S.CardTheme $themeColor={topicHeader[currentTask.topic]} >
+                    <S.TopicText>{currentTask.topic}</S.TopicText>
+                </S.CardTheme> 
               </div>
 
             </S.PopBrowseTopBlock>
             {isEdit && (
-              <S.PopBrowseStatus>
-                <p className="status__p">Статус</p>
+              <>
+              <S.PopBrowseTaskSubttl>Статус</S.PopBrowseTaskSubttl>
+             
+              <S.RadioToolbar>
 
-                <div className="status__themes">
-                  <div className="status__theme ">
-                    <p>Без статуса</p>
-                  </div>
-                  <div className="status__theme _gray">
-                    <p className="_gray">Нужно сделать</p>
-                  </div>
-                  <div className="status__theme">
-                    <p>В работе</p>
-                  </div>
-                  <div className="status__theme">
-                    <p>Тестирование</p>
-                  </div>
-                  <div className="status__theme ">
-                    <p>Готово</p>
-                  </div>
-                </div>
-              </S.PopBrowseStatus>
+                
+              <S.InputRadio
+                  type="radio"
+                  id="radio1"
+                  name="status"
+                  value="Нужно сделать"
+                  onChange={handleInputChange}
+                />
+                <S.RadioToolbarLabel1 htmlFor="radio1">Нужно сделать</S.RadioToolbarLabel1>
+
+                <S.InputRadio
+                  type="radio"
+                  id="radio2"
+                  name="status"
+                  value="В работе"
+                  onChange={handleInputChange} />
+                <S.RadioToolbarLabel2 htmlFor="radio2">В работе</S.RadioToolbarLabel2>
+
+                <S.InputRadio
+                  type="radio"
+                  id="radio3"
+                  name="status"
+                  value="Тестирование"
+                  onChange={handleInputChange} />
+                <S.RadioToolbarLabel3 htmlFor="radio3">Тестирование</S.RadioToolbarLabel3>
+                
+                <S.InputRadio
+                  type="radio"
+                  id="radio4"
+                  name="status"
+                  value="Готово"
+                  onChange={handleInputChange} />
+                <S.RadioToolbarLabel4 htmlFor="radio4">Готово</S.RadioToolbarLabel4>  
+
+               
+                
+              </S.RadioToolbar>
+              </>
             )}
 
             <S.PopBrowseWrap>
@@ -122,7 +145,7 @@ export default function PopBrowse() {
               <Calendar selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate} />
             </S.PopBrowseWrap>
-
+            {!isEdit && (
             <S.PopBrowseBtnBrowse>
               <S.PopBrowseBtnGroup>
                 <S.PopBrowseBtnEdit onClick={() => setIsedit(true)}>
@@ -137,31 +160,31 @@ export default function PopBrowse() {
                   Закрыть
                 </S.PopBrowseBtnClose>
               </Link>
-
+              
             </S.PopBrowseBtnBrowse>
-            <div className="pop-browse__btn-edit _hide">
-              <div className="btn-group">
-                <button className="btn-edit__edit _btn-bg _hover01">
-                  <a href="#">Сохранить</a>
-                </button>
-                <Link to={appRoutes.TASK}>
-                  <button className="btn-edit__edit _btn-bor _hover03">
+            )}
+            {isEdit && (
+            <S.PopBrowseBtnBrowse>
+              <S.PopBrowseBtnGroup>
+                <S.PopBrowseBtnClose>
+                  Сохранить
+                </S.PopBrowseBtnClose>
+                <Link to={appRoutes.MAIN}>
+                  <S.PopBrowseBtnEdit>
                     Отменить
-                  </button>
+                  </S.PopBrowseBtnEdit>
                 </Link>
-                <button
-                  className="btn-edit__delete _btn-bor _hover03"
-                  id="btnDelete"
-                >
-                  <a href="#">Удалить задачу</a>
-                </button>
-              </div>
+                <S.PopBrowseBtnEdit onClick={handleTaskDelete}>
+                  Удалить задачу
+                </S.PopBrowseBtnEdit>
+              </S.PopBrowseBtnGroup>
               <Link to={appRoutes.MAIN}>
-                <span className="btn-edit__close _btn-bg _hover01">
+                <S.PopBrowseBtnClose>
                   Закрыть
-                </span>
+                </S.PopBrowseBtnClose>
               </Link>
-            </div>
+            </S.PopBrowseBtnBrowse>
+              )}
           </S.PopBrowseContent>
         </S.PopBrowseBlock>
       </S.PopBrowseContainer>
