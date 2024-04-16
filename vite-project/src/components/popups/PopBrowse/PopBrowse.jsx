@@ -4,7 +4,7 @@ import * as S from "./PopBrowse.styled"
 import Calendar from "../../Calendar/Calendar";
 import { useTasks } from "../../../hooks/useTasks";
 import { useState } from "react";
-import { deleteTodo } from "../../../api";
+import { deleteTodo, editTodo } from "../../../api";
 import { useUser } from "../../../hooks/useUser";
 import { topicHeader } from "../../../lib/topic";
 
@@ -29,7 +29,7 @@ export default function PopBrowse() {
 
 
   const [newTask, setNewTask] = useState({
-    title: currentTask.title, 
+    title: currentTask.title,
     description: currentTask.description,
     topic: currentTask.topic,
   })
@@ -52,40 +52,60 @@ export default function PopBrowse() {
     await deleteTodo({
       id,
       token: user.token,
-    }) 
-    .then((data)=>{
-      console.log(data)
-      updateTask(data.tasks)
-      navigate(appRoutes.MAIN)
     })
-    .catch((error)=>{
-      console.error(error)
-    })
+      .then((data) => {
+        console.log(data)
+        updateTask(data.tasks)
+        navigate(appRoutes.MAIN)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }
 
-  return (
-    <S.PopBrowse>
-      <S.PopBrowseContainer>
-        <S.PopBrowseBlock>
-          <S.PopBrowseContent>
-            <S.PopBrowseTopBlock>
-              <h3 className="pop-browse__ttl">Название задачи:{currentTask.title}</h3>
-              <div className="categories__theme theme-top _orange _active-category">
-                
-                <S.CardTheme $themeColor={topicHeader[currentTask.topic]} >
-                    <S.TopicText>{currentTask.topic}</S.TopicText>
-                </S.CardTheme> 
-              </div>
 
-            </S.PopBrowseTopBlock>
-            {isEdit && (
-              <>
+const handleTaskChange=async()=>{
+const taskData={
+  ...newTask,
+  date:selectedDate,
+  token:user.token,
+}
+  await editTodo({ taskData, id, token: user.token })
+    .then((data) =>{
+      console.log(data);
+      updateTask(data.tasks)
+    navigate(appRoutes.MAIN)
+})
+.catch((error) => {
+  console.error(error)
+})
+  
+}
+
+  
+return (
+  <S.PopBrowse>
+    <S.PopBrowseContainer>
+      <S.PopBrowseBlock>
+        <S.PopBrowseContent>
+          <S.PopBrowseTopBlock>
+            <h3 className="pop-browse__ttl">Название задачи:{currentTask.title}</h3>
+            <div className="categories__theme theme-top _orange _active-category">
+
+              <S.CardTheme $themeColor={topicHeader[currentTask.topic]} >
+                <S.TopicText>{currentTask.topic}</S.TopicText>
+              </S.CardTheme>
+            </div>
+
+          </S.PopBrowseTopBlock>
+          {isEdit && (
+            <>
               <S.PopBrowseTaskSubttl>Статус</S.PopBrowseTaskSubttl>
-             
+
               <S.RadioToolbar>
 
-                
-              <S.InputRadio
+
+                <S.InputRadio
                   type="radio"
                   id="radio1"
                   name="status"
@@ -109,43 +129,43 @@ export default function PopBrowse() {
                   value="Тестирование"
                   onChange={handleInputChange} />
                 <S.RadioToolbarLabel3 htmlFor="radio3">Тестирование</S.RadioToolbarLabel3>
-                
+
                 <S.InputRadio
                   type="radio"
                   id="radio4"
                   name="status"
                   value="Готово"
                   onChange={handleInputChange} />
-                <S.RadioToolbarLabel4 htmlFor="radio4">Готово</S.RadioToolbarLabel4>  
+                <S.RadioToolbarLabel4 htmlFor="radio4">Готово</S.RadioToolbarLabel4>
 
-               
-                
+
+
               </S.RadioToolbar>
-              </>
-            )}
+            </>
+          )}
 
-            <S.PopBrowseWrap>
-              <S.PopBrowseForm>
-                <S.PopBrowseBlock>
-                  <S.PopBrowseTaskSubttl>
-                    Описание задачи
-                  </S.PopBrowseTaskSubttl>
-                  <textarea
-                    className="form-browse__area"
-                    name="description"
-                    id="textArea01"
-                    // readOnly=""
-                    value={newTask.description}
-                    onChange={handleInputChange}
-                    placeholder="Введите описание задачи..."
+          <S.PopBrowseWrap>
+            <S.PopBrowseForm>
+              <S.PopBrowseBlock>
+                <S.PopBrowseTaskSubttl>
+                  Описание задачи
+                </S.PopBrowseTaskSubttl>
+                <textarea
+                  className="form-browse__area"
+                  name="description"
+                  id="textArea01"
+                  // readOnly=""
+                  value={newTask.description}
+                  onChange={handleInputChange}
+                  placeholder="Введите описание задачи..."
 
-                  />
-                </S.PopBrowseBlock>
-              </S.PopBrowseForm>
-              <Calendar selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate} />
-            </S.PopBrowseWrap>
-            {!isEdit && (
+                />
+              </S.PopBrowseBlock>
+            </S.PopBrowseForm>
+            <Calendar selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate} />
+          </S.PopBrowseWrap>
+          {!isEdit && (
             <S.PopBrowseBtnBrowse>
               <S.PopBrowseBtnGroup>
                 <S.PopBrowseBtnEdit onClick={() => setIsedit(true)}>
@@ -160,13 +180,13 @@ export default function PopBrowse() {
                   Закрыть
                 </S.PopBrowseBtnClose>
               </Link>
-              
+
             </S.PopBrowseBtnBrowse>
-            )}
-            {isEdit && (
+          )}
+          {isEdit && (
             <S.PopBrowseBtnBrowse>
               <S.PopBrowseBtnGroup>
-                <S.PopBrowseBtnClose>
+                <S.PopBrowseBtnClose onClick={handleTaskChange}>
                   Сохранить
                 </S.PopBrowseBtnClose>
                 <Link to={appRoutes.MAIN}>
@@ -184,10 +204,10 @@ export default function PopBrowse() {
                 </S.PopBrowseBtnClose>
               </Link>
             </S.PopBrowseBtnBrowse>
-              )}
-          </S.PopBrowseContent>
-        </S.PopBrowseBlock>
-      </S.PopBrowseContainer>
-    </S.PopBrowse>
-  )
+          )}
+        </S.PopBrowseContent>
+      </S.PopBrowseBlock>
+    </S.PopBrowseContainer>
+  </S.PopBrowse>
+)
 }
