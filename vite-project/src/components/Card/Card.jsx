@@ -13,12 +13,13 @@ export default function Card({ topic, title, date, id }) {
                     <S.CardTheme $themeColor={topicHeader[topic]} >
                     <S.TopicText>{topic}</S.TopicText>
                 </S.CardTheme>
-                
-                    {/* <S.CardBtn >
+                <Link to={`task/${id}`}>
+                    <S.CardBtn >
                         <S.CardBtnDiv />
                         <S.CardBtnDiv />
                         <S.CardBtnDiv />
-                    </S.CardBtn> */}
+                    </S.CardBtn>
+                    </Link>
                 
             </S.CardGroup>
             <S.CardContent>
