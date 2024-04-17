@@ -19,7 +19,8 @@ export default function PopNewCard() {
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
-    topic: " ",
+    topic: "",
+   
   })
 
   const handleFormSubmit = async () => {
@@ -31,12 +32,19 @@ export default function PopNewCard() {
     };
 
     console.log(taskData);
+
     // функция должна быть для отправки данных со второго курса
     await postTodo({ taskData, token: user.token })
       .then((data) => {
-        console.log(data);
-        updateTask(data.tasks)
-        navigate(appRoutes.MAIN);
+        console.log("что выводит?", data);
+        if (data.error) {
+          alert('Одно из полей не заполнено!Заполните поля: "название","описание","дату" и "категорию"')
+          
+        }
+        else {
+          updateTask(data.tasks)
+          navigate(appRoutes.MAIN)
+        }
       }).catch((error) => {
         alert(error)
       })

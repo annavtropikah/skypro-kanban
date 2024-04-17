@@ -144,52 +144,52 @@ export default function PopBrowse() {
               </>
             )}
 
-{!isEdit && (
-            <S.PopBrowseWrap>
-              <S.PopBrowseForm>
-                <S.PopBrowseBlock>
-                  <S.PopBrowseTaskSubttl>
-                    Описание задачи
-                  </S.PopBrowseTaskSubttl>
-                  <textarea
-                    className="form-browse__area"
-                    name="description"
-                    id="textArea01"
-                    readOnly=""
-                    value={newTask.description}
-                
-                    placeholder="Введите описание задачи..."
+            {!isEdit && (
+              <S.PopBrowseWrap>
+                <S.PopBrowseForm>
+                  <S.PopBrowseBlock>
+                    <S.PopBrowseTaskSubttl>
+                      Описание задачи
+                    </S.PopBrowseTaskSubttl>
+                    <textarea
+                      className="form-browse__area"
+                      name="description"
+                      id="textArea01"
+                      // readOnly=""
+                      value={newTask.description}
 
-                  />
-                </S.PopBrowseBlock>
-              </S.PopBrowseForm>
-              <Calendar selectedDate={selectedDate}
-                 />
-            </S.PopBrowseWrap>
-)}
-{isEdit && (
-            <S.PopBrowseWrap>
-              <S.PopBrowseForm>
-                <S.PopBrowseBlock>
-                  <S.PopBrowseTaskSubttl>
-                    Описание задачи
-                  </S.PopBrowseTaskSubttl>
-                  <textarea
-                    className="form-browse__area"
-                    name="description"
-                    id="textArea01"
-                    // readOnly=""
-                    value={newTask.description}
-                    onChange={handleInputChange}
-                    placeholder="Введите описание задачи..."
+                      placeholder="Введите описание задачи..."
 
-                  />
-                </S.PopBrowseBlock>
-              </S.PopBrowseForm>
-              <Calendar selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate} />
-            </S.PopBrowseWrap>
-)}
+                    />
+                  </S.PopBrowseBlock>
+                </S.PopBrowseForm>
+                <Calendar selectedDate={selectedDate}
+                />
+              </S.PopBrowseWrap>
+            )}
+            {isEdit && (
+              <S.PopBrowseWrap>
+                <S.PopBrowseForm>
+                  <S.PopBrowseBlock>
+                    <S.PopBrowseTaskSubttl>
+                      Описание задачи
+                    </S.PopBrowseTaskSubttl>
+                    <textarea
+                      className="form-browse__area"
+                      name="description"
+                      id="textArea01"
+                      // readOnly=""
+                      value={newTask.description}
+                      onChange={handleInputChange}
+                      placeholder="Введите описание задачи..."
+
+                    />
+                  </S.PopBrowseBlock>
+                </S.PopBrowseForm>
+                <Calendar selectedDate={selectedDate}
+                  setSelectedDate={setSelectedDate} />
+              </S.PopBrowseWrap>
+            )}
 
             {!isEdit && (
               <S.PopBrowseBtnBrowse>

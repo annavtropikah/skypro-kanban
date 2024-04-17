@@ -9,6 +9,9 @@ import { useUser } from "../../hooks/useUser";
 export default function Header() {
   const { user } = useUser();
   const [isOpened, setIsOpened] = useState(false);
+  const [theme, setTheme] = useState("day");
+
+
   function togglePopup() {
     setIsOpened((prevState) => !prevState);
   }
@@ -39,7 +42,7 @@ export default function Header() {
 
 
             <S.HeaderUser onClick={togglePopup} >
-            {user.name}
+              {user.name}
             </S.HeaderUser>
             {isOpened && (
               <S.HeaderPopupUserSet>
@@ -48,7 +51,19 @@ export default function Header() {
                 {/* <S.PopUserSetMail>{user.login}</S.PopUserSetMail> */}
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
-                  <input type="checkbox" name="checkbox" />
+                  <input
+                  
+                    onClick={(e) => { 
+                      if (e.target.checked) {
+                        setTheme('night')
+                      } else {
+                        setTheme('day')
+                      }
+                    }}
+                    checked={theme==="night"}
+                    type="checkbox"
+                    name="checkbox"
+                  />
                 </S.PopUserSetTheme>
                 <Link to={appRoutes.SIGNIN}>
                   <S.ButtonExit>

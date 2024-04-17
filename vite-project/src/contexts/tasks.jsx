@@ -21,6 +21,7 @@ export const TaskProvider = ({ children }) => {
 
 
   const updateTask = useCallback((newTask) => {
+    console.log('новая задача',newTask);
     setCards(newTask);
     localStorage.setItem("task", JSON.stringify(newTask));
   },[])
