@@ -10,7 +10,8 @@ export const TopicText = styled.p`
 export const CardTheme = styled.div`
   width: auto;
   height: 20px;
-  padding: 5px 14px;
+  padding: 0px 14px;
+  padding-bottom:8px;
   border-radius: 18px;
   background-color: ${({ $themeColor }) =>
     topicStyles[$themeColor]?.backgroundColor || "#94a6be"};
@@ -65,8 +66,8 @@ export const CardBtn = styled.div`
   padding: 2px;
 `;
 export const CardBtnDiv = styled(CardBtn)`
- width: 4px;
-  height: 4px;
+ width: 1px;
+  height: 1px;
   border-radius: 50%;
   background-color: #94A6BE;
 `;

@@ -83,7 +83,8 @@ export const TopicText = styled.p`
 export const CardTheme = styled.div`
   width: auto;
   height: 20px;
-  padding: 5px 14px;
+  padding: 1px 18px;
+  padding-bottom:10px;
   border-radius: 18px;
   background-color: ${({ $themeColor }) =>
     topicStyles[$themeColor]?.backgroundColor || "#94a6be"};
@@ -109,6 +110,7 @@ export const PopBrowseForm = styled.form`
   max-width: 370px;
   width: 100%;
   display: block;
+  margin-right:40px;
  
   
 `;
@@ -119,40 +121,12 @@ color: #000;
 font-size: 14px;
 font-weight: 600;
 line-height: 1;
+margin-bottom:5px;
+
 
 `;
 
-// export const PopBrowseArea = styled.textarea`
-//   max-width: 370px;
-//   width: 100%;
-//   outline: none;
-//   padding: 14px;
-//   background: #EAEEF6;
-//   border: 0.7px solid rgba(148, 166, 190, 0.4);
-//   border-radius: 8px;
-//   font-size: 14px;
-//   line-height: 1;
-//   letter-spacing: -0.14px;
-//   margin-top: 14px;
-//   height: 200px;
 
-//   &::-moz-placeholder {
-//   font-weight: 400;
-//   font-size: 14px;
-//   line-height: 1px;
-//   color: #94A6BE;
-//   letter-spacing: -0.14px;
-// }
-
-// &::placeholder {
-//   font-weight: 400;
-//   font-size: 14px;
-//   line-height: 1px;
-//   color: #94A6BE;
-//   letter-spacing: -0.14px;
-// }
-
-// `;
 
 
 export const PopBrowseBtnBrowse = styled.div`
@@ -166,7 +140,8 @@ export const PopBrowseBtnBrowse = styled.div`
 export const PopBrowseBtnGroup = styled.div`
  width: 100%;
  margin-right: 0px;
- display:flex
+ display:flex;
+
  
 `;
 
@@ -174,8 +149,10 @@ export const PopBrowseBtnEdit = styled.span`
 
   
   background-color: transparent;
+  color:  #565EEF;
   border-radius: 4px;
   border: 0.7px solid var(--palette-navy-60, #565EEF);
+
   outline: none;
   display: flex;
   align-items: center;
@@ -184,7 +161,7 @@ export const PopBrowseBtnEdit = styled.span`
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color:  #565EEF;
+  
   margin-right:8px;
   padding:8px 15px;
   
@@ -207,8 +184,11 @@ export const PopBrowseBtnDelit = styled.span`
 
   
   background-color: transparent;
+  color:  #565EEF;
   border-radius: 4px;
   border: 0.7px solid var(--palette-navy-60, #565EEF);
+
+
   outline: none;
   display: flex;
   align-items: center;
@@ -217,7 +197,8 @@ export const PopBrowseBtnDelit = styled.span`
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color:  #565EEF;
+  
+  margin-right:8px;
   padding:8px 15px;
   
   
@@ -236,8 +217,11 @@ export const PopBrowseBtnClose = styled.span`
 
 
   background-color: #565EEF;
+  color: #FFFFFF;
   border-radius: 4px;
   border: none;
+
+
   outline: none;
   display: flex;
   align-items: center;
@@ -246,7 +230,8 @@ export const PopBrowseBtnClose = styled.span`
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color: #FFFFFF;
+
+  margin-right:8px;
   padding:8px 15px;
 
 
@@ -260,3 +245,86 @@ export const PopBrowseBtnClose = styled.span`
   padding: 0 14px;
  }
 `;
+
+export const RadioToolbar = styled.div`
+margin-top:15px;
+
+`
+export const RadioToolbarLabel1 = styled.label`
+  display: inline-block;
+  padding: 8px 20px 8px 20px;
+  border-radius: 20px;
+  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  background: transparent;
+  cursor: pointer;
+  margin-right: 7px;
+  opacity: 50%;
+
+  &:hover {
+    opacity: 100%;
+    background-color:#565EEF;
+    color: #FFFFFF;
+  }
+`
+
+export const RadioToolbarLabel2 = styled.label`
+  display: inline-block;
+  padding: 8px 20px 8px 20px;
+  border-radius: 20px;
+  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  background: transparent;
+  cursor: pointer;
+  margin-right: 7px;
+  opacity: 50%;
+
+  &:hover {
+    opacity: 100%;
+    background-color:#565EEF;
+    color: #FFFFFF;
+  }
+`
+
+export const RadioToolbarLabel3 = styled.label`
+  display: inline-block;
+  padding: 8px 20px 8px 20px;
+  border-radius: 20px;
+  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  background: transparent;
+  cursor: pointer;
+  margin-right: 7px;
+  opacity: 50%;
+
+  &:hover {
+    opacity: 100%;
+    background-color:#565EEF;
+    color: #FFFFFF;
+    
+  }
+`
+export const RadioToolbarLabel4 = styled.label`
+  display: inline-block;
+  padding: 8px 20px 8px 20px;
+  border-radius: 20px;
+  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  background: transparent;
+  cursor: pointer;
+  margin-right: 7px;
+  opacity: 50%;
+
+  &:hover {
+    opacity: 100%;
+    background-color:#565EEF;
+    color: #FFFFFF;
+    
+  }
+`
+
+export const InputRadio = styled.input`
+  display: none;
+
+&:checked + label {
+  opacity: 100%;
+  background-color:#565EEF;
+  color: #FFFFFF;
+}
+`

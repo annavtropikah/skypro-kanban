@@ -9,6 +9,8 @@ import { GlobalStyle } from '../../common/Global.styled';
 
 import { Outlet } from 'react-router-dom';
 import { getTodos } from '../../api';
+import { useUser } from '../../hooks/useUser';
+import { useTasks } from '../../hooks/useTasks';
 
 
 const statusList = [
@@ -19,32 +21,21 @@ const statusList = [
   "Готово",
 ];
 
-export default function MainPage({ user }) {
+export default function MainPage() {
 
-  const [cards, setCards] = useState([]);
+  const {cards, updateTask} = useTasks();
   const [isLoading, setIsLoading] = useState(true)
-
+  const{user}=useUser()
 
   useEffect(() => {
     getTodos({ token: user.token }).then((todos) => {
       console.log(todos);
-      setCards(todos.tasks);
+      updateTask(todos.tasks);
       setIsLoading(false);
-    }).catch((error)=>{
-      alert (error)
+    }).catch((error) => {
+      alert(error)
     })
-  }, [user])
-
-  function addCard() {
-    const newCard = {
-      id: cards.length + 1,
-      theme: "Web Design",
-      title: "Название задачи",
-      date: "29.10.23",
-      status: "Без статуса",
-    }
-    setCards([...cards, newCard])
-  }
+  }, [user,updateTask])
 
 
   return (
@@ -54,7 +45,7 @@ export default function MainPage({ user }) {
 
         <Outlet />
 
-        <Header addCard={addCard} />
+        <Header  />
         {isLoading ? <img src="./images/loading-thinking.gif" alt="loading" /> : (<MainContent>
           {statusList.map((status) => (
             <Column

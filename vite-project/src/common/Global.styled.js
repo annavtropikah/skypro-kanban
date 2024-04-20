@@ -10,10 +10,14 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  &:before,
-  &:after {
-  box-sizing: border-box;
-}
+    &:before,
+    &:after {
+      box-sizing: border-box;
+    }
+    /* &.night{
+      background-color:#000;
+      color: #fff;
+    } */
 }
   
 a,

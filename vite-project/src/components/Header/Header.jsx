@@ -3,10 +3,15 @@ import * as S from "./Header.styled";
 import { Container } from "../../common/Common.styled";
 import { Link } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
+import { useUser } from "../../hooks/useUser";
 
 
-export default function Header({ addCard }) {
+export default function Header() {
+  const { user } = useUser();
   const [isOpened, setIsOpened] = useState(false);
+  const [theme, setTheme] = useState("day");
+
+
   function togglePopup() {
     setIsOpened((prevState) => !prevState);
   }
@@ -27,30 +32,45 @@ export default function Header({ addCard }) {
 
 
           <S.HeaderNav>
-            <S.ButtonAdd onClick={addCard} id="btnMainNew">
-              Создать новую задачу
-            </S.ButtonAdd>
+            <Link to={appRoutes.NEW_CARD}>
+              <S.ButtonAdd id="btnMainNew">
+                Создать новую задачу
+              </S.ButtonAdd>
+            </Link>
+
 
 
 
             <S.HeaderUser onClick={togglePopup} >
-              Ivan Ivanov
+              {user.name}
             </S.HeaderUser>
             {isOpened && (
-           <S.HeaderPopupUserSet>
+              <S.HeaderPopupUserSet>
                 {/* <a href="">x</a> */}
-                <S.PopUserSetName>Ivan Ivanov</S.PopUserSetName>
-                <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
+                <S.PopUserSetName>{user.name}</S.PopUserSetName>
+                {/* <S.PopUserSetMail>{user.login}</S.PopUserSetMail> */}
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
-                  <input type="checkbox"  name="checkbox" />
+                  <input
+                  
+                    onClick={(e) => { 
+                      if (e.target.checked) {
+                        setTheme('night')
+                      } else {
+                        setTheme('day')
+                      }
+                    }}
+                    checked={theme==="night"}
+                    type="checkbox"
+                    name="checkbox"
+                  />
                 </S.PopUserSetTheme>
                 <Link to={appRoutes.SIGNIN}>
-                <S.ButtonExit>
-                  Выйти
-                </S.ButtonExit>
+                  <S.ButtonExit>
+                    Выйти
+                  </S.ButtonExit>
                 </Link>
-                </S.HeaderPopupUserSet>
+              </S.HeaderPopupUserSet>
             )}
 
 
