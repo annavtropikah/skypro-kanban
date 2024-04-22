@@ -20,7 +20,7 @@ export default function PopNewCard() {
     title: "",
     description: "",
     topic: "",
-   
+
   })
 
   const handleFormSubmit = async () => {
@@ -39,7 +39,7 @@ export default function PopNewCard() {
         console.log("что выводит?", data);
         if (data.error) {
           alert('Одно из полей не заполнено!Заполните поля: "название","описание","дату" и "категорию"')
-          
+
         }
         else {
           updateTask(data.tasks)

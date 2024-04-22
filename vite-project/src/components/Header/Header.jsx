@@ -52,15 +52,15 @@ export default function Header() {
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
                   <input
-                  
-                    onClick={(e) => { 
+
+                    onClick={(e) => {
                       if (e.target.checked) {
                         setTheme('night')
                       } else {
                         setTheme('day')
                       }
                     }}
-                    checked={theme==="night"}
+                    checked={theme === "night"}
                     type="checkbox"
                     name="checkbox"
                   />

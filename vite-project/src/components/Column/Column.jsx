@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import * as S from "./Column.styled";
 
 
-export default function Column({ title, cardList}) {
+export default function Column({ title, cardList }) {
 
     return (
         <S.MainColumn>

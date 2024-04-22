@@ -23,9 +23,9 @@ const statusList = [
 
 export default function MainPage() {
 
-  const {cards, updateTask} = useTasks();
+  const { cards, updateTask } = useTasks();
   const [isLoading, setIsLoading] = useState(true)
-  const{user}=useUser()
+  const { user } = useUser()
 
   useEffect(() => {
     getTodos({ token: user.token }).then((todos) => {
@@ -35,7 +35,7 @@ export default function MainPage() {
     }).catch((error) => {
       alert(error)
     })
-  }, [user,updateTask])
+  }, [user, updateTask])
 
 
   return (
@@ -45,7 +45,7 @@ export default function MainPage() {
 
         <Outlet />
 
-        <Header  />
+        <Header />
         {isLoading ? <img src="./images/loading-thinking.gif" alt="loading" /> : (<MainContent>
           {statusList.map((status) => (
             <Column
